@@ -1,0 +1,4 @@
+- Java 8 instalado
+- Importar o projeto maven
+- Subir a aplicação no Tomcat8
+- Utlizar o Postman(app do Chrome) para testar os serviços Rest
