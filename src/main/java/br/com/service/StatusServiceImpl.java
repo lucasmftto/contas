@@ -23,4 +23,19 @@ public class StatusServiceImpl implements StatusService {
 		}
 	}
 
+	@Override
+	public Status getStatusId(Integer statusId) {
+		return statusDAO.getStatusId(statusId);
+	}
+
+	@Override
+	public void updateStatus(Status status) {
+		statusDAO.updateStatus(status);
+	}
+
+	@Override
+	public void deleteStatus(Integer statusId) {
+		statusDAO.deleteStatus(statusId);
+	}
+
 }

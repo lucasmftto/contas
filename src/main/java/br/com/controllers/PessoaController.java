@@ -17,60 +17,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.entity.Conta;
-import br.com.service.ContaService;
-
+import br.com.entity.Pessoa;
+import br.com.service.PessoaService;
 
 @RestController
-@RequestMapping("/contas")
-public class ContasController implements ErrorController{
-
+@RequestMapping("/pessoas")
+public class PessoaController implements ErrorController{
+	
 	private final static String ERROR_PATH = "/error";
 	
 	@Autowired
-	private ContaService contaService;
+	private PessoaService pessoaService;
 	
 	@PostMapping("add")
-	public ResponseEntity<Void> addConta(@RequestBody Conta conta, UriComponentsBuilder builder) {
-		boolean flag = contaService.addConta(conta);
+	public ResponseEntity<Void> addPessoa(@RequestBody Pessoa pessoa, UriComponentsBuilder builder) {
+		boolean flag = pessoaService.addPessoa(pessoa);
 		if (flag == false) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(builder.path("/add/{id}").buildAndExpand(conta.getId_conta()).toUri());
+		headers.setLocation(builder.path("/add/{id}").buildAndExpand(pessoa.getId_pessoa()).toUri());
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity<Void> deleteConta(@PathVariable("id") Integer id) {
-		contaService.deleteConta(id);
+	public ResponseEntity<Void> deletePessoa(@PathVariable("id") Integer id) {
+		pessoaService.deletePessoa(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
-	@GetMapping("todasContas")
-	public ResponseEntity<List<Conta>> getAllContas() {
-		List<Conta> list = contaService.getTodasContas();
-		return new ResponseEntity<List<Conta>>(list, HttpStatus.OK);
+	@GetMapping("todasPessoas")
+	public ResponseEntity<List<Pessoa>> getAllPessoa() {
+		List<Pessoa> list = pessoaService.getTodasPessoas();
+		return new ResponseEntity<List<Pessoa>>(list, HttpStatus.OK);
 	}
 	
 	@PutMapping("atualiza")
-	public ResponseEntity<Conta> updateConta(@RequestBody Conta conta) {
-		contaService.updateConta(conta);
-		return new ResponseEntity<Conta>(conta, HttpStatus.OK);
+	public ResponseEntity<Pessoa> updatePessoa(@RequestBody Pessoa pessoa) {
+		pessoaService.updatePessoa(pessoa);
+		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}
 	
 	@GetMapping("listarId/{id}")
-	public ResponseEntity<Conta> getContaById(@PathVariable("id") Integer id) {
-		Conta conta = contaService.getContaId(id);
-		return new ResponseEntity<Conta>(conta, HttpStatus.OK);
+	public ResponseEntity<Pessoa> getPessoaById(@PathVariable("id") Integer id) {
+		Pessoa pessoa = pessoaService.getPessoaId(id);
+		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}
 	
-	@GetMapping("listarPorMatriz/{id}")
-	public ResponseEntity<List<Conta>>  getContasByMatriz(@PathVariable("id") Integer id_matriz) {
-		List<Conta> list  = contaService.getContasByMatriz(id_matriz);
-		return new ResponseEntity<List<Conta>>(list, HttpStatus.OK);
-	}
-
 	@Override
 	public String getErrorPath() {
 		// TODO Auto-generated method stub

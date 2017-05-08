@@ -18,38 +18,32 @@ public class PessoaServiceImpl implements PessoaService {
 
 	@Override
 	public List<Pessoa> getTodasPessoas() {
-		// TODO Auto-generated method stub
-		return null;
+		return pessoaDAO.getAllPessoas();
 	}
 
 	@Override
 	public Pessoa getPessoaId(Integer pessoa) {
-		// TODO Auto-generated method stub
-		return null;
+		return pessoaDAO.getPessoaId(pessoa);
 	}
 
 	@Override
 	public boolean addPessoa(Pessoa pessoa) {
-		// TODO Auto-generated method stub
 		try {
 			pessoaDAO.addPessoa(pessoa);
 			return true;
 		} catch (Exception e) {
-			// TODO: handle exception
 			return false;
 		}
 	}
 
 	@Override
 	public void updatePessoa(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-
+		pessoaDAO.updatePessoa(pessoa);
 	}
 
 	@Override
 	public void deletePessoa(Integer pessoa) {
-		// TODO Auto-generated method stub
-
+		pessoaDAO.deletePessoa(pessoa);
 	}
 
 }

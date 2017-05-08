@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.dao.ContaDAO;
 import br.com.dao.MovimentacaoDAO;
 import br.com.entity.Conta;
 import br.com.entity.Movimentacao;
@@ -20,9 +19,6 @@ public class MovimentacaoServiceImpl implements MovimentacaoService{
 	@Autowired
 	ContaService contaService;
 	
-	@Autowired
-	private ContaDAO contaDAO;
-
 	@Override
 	public List<Movimentacao> getTodasMovimentacoes() {
 		return movimentacaoDAO.getAllMovimentacao();
@@ -57,7 +53,7 @@ public class MovimentacaoServiceImpl implements MovimentacaoService{
 
 	@Override
 	public boolean setAporte(Movimentacao movimentacao) {
-		Conta contaDestino = contaDAO.getContaId(movimentacao.getId_conta().getId_conta());
+		Conta contaDestino = contaService.getContaId(movimentacao.getId_conta().getId_conta());
 		
 		if (!contaService.isContaAtiva(contaDestino.getId_conta()) ||
 				movimentacao.getId_conta_depositante() != null) {

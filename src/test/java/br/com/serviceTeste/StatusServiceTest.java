@@ -18,7 +18,7 @@ public class StatusServiceTest {
 	StatusService statusService;
 	
 	@Test
-	public void AddStatusTest(){
+	public void addStatus(){
 		
 		Status s1 = new Status();
 		Status s2 = new Status();
@@ -33,5 +33,12 @@ public class StatusServiceTest {
 		statusService.addStatus(s3);
 		
 	}
+	
+
+	@Test
+	public void deleteStatus(){
+		statusService.deleteStatus(6);
+	}
+		
 
 }

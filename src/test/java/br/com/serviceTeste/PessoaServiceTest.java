@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import br.com.contas.Aplicacao;
-import br.com.dao.PessoaDAO;
 import br.com.entity.Pessoa;
 import br.com.service.PessoaService;
 
@@ -22,8 +21,6 @@ public class PessoaServiceTest {
 	@Autowired
 	PessoaService pessoaService;
 	
-	PessoaDAO pessoaDAO;
-
 	@Test
 	public void addPessoa() {
 
@@ -36,5 +33,19 @@ public class PessoaServiceTest {
 		
 
 		Assert.assertTrue(pessoaService.addPessoa(p));
+	}
+	
+	@Test
+	public void deletepPessoa(){
+		this.pessoaService.deletePessoa(6);
+	}
+	
+	@Test
+	public void updatepPessoa(){
+		Pessoa pessoa = pessoaService.getPessoaId(6);
+		
+		pessoa.setNome(pessoa.getNome() + "Teste update");
+		
+		this.pessoaService.updatePessoa(pessoa);
 	}
 }
