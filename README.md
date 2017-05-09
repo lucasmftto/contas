@@ -42,3 +42,93 @@ http://localhost:8080/contas/add
 }
 
 
+Deleta Conta:
+
+http://localhost:8080/contas/delete/1
+
+Lista todas as contas:
+
+http://localhost:8080/contas/todasContas
+
+Atualiza conta:
+
+http://localhost:8080/contas/atualiza
+
+{
+  "id_conta": 2,
+  "nome": "segunda conta lal",
+  "dataCriacao": "2017-05-05",
+  "cod_matriz": "",
+  "pessoa": {
+  		"id_pessoa": 1
+  
+  }
+}
+
+
+Lista conta por Id:
+
+http://localhost:8080/contas/listarId/2
+
+Listar Contas por Id da Matriz:
+
+http://localhost:8080/contas/listarPorMatriz/2
+
+Insere aporte na Matriz:
+
+http://localhost:8080/movimentacao/aporte
+
+{
+  "valor": 12,
+  "descricao": "quarto Aporte",
+  
+  "id_conta": {
+  		"id_conta": 3
+  
+  }
+}
+
+Estorno Aporte:
+
+http://localhost:8080/movimentacao/estornoAporte/
+
+{
+	"id_movimentacao": 1
+ 
+}
+
+Realiza Tranferencia:
+
+http://localhost:8080/movimentacao/transferencia/
+
+{
+  "valor": 300,
+  "descricao": "teste Transferencia matris",
+  
+  "id_conta": {
+  		"id_conta": 12
+  
+  },
+  "id_conta_depositante": {
+  		"id_conta": 7
+  }
+}
+
+Estorno de Transferencia:
+
+http://localhost:8080/movimentacao/estornoTransferencia/
+
+{
+	"id_movimentacao": 5
+ 
+}
+
+Consultar movimentações por conta:
+
+http://localhost:8080/movimentacao/movimentacoesByConta/2
+
+Consultar saldo por Id da conta:
+
+http://localhost:8080/movimentacao/saldoByConta/2
+
+

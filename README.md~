@@ -21,4 +21,24 @@ INSERT INTO 'contas'.'status' ('descricao') VALUES ('Cancelada');
 
 https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
 
+# Segue os principais Serviços diponiveis
+
+Adiciona conta:
+
+http://localhost:8080/contas/add
+
+{
+  "nome": "nova conta",
+  "dataCriacao": "2017-05-05",
+  "cod_matriz": 3,
+  "pessoa": {
+  		"id_pessoa": 1
+  
+  },
+  "status": {
+  		"cod_status": 3
+  
+  }
+}
+
 
