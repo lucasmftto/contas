@@ -20,7 +20,7 @@ import br.com.entity.Pessoa;
 public class PessoaControllerTest {
 	
 	@Test
-	public void getArticleByIdDemo() {
+	public void listarPessoaId() {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
